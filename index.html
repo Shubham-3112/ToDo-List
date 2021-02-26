@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <input type="text" class="tatb" placeholder="Enter a task...">
+
+        <div class="notcopleated">
+
+            
+           
+        
+
+        </div>
+        <div class="comp">
+         <h3>_______________________________</h3>         
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript">
+        $(".tatb").on("keyup",function(e){
+          //13  means enter button
+          if(e.keyCode == 13 && $(".tatb").val() != "")
+          {
+            var task = $("<div class='task'></div>").text($(".tatb").val());
+            var del =$("<i class='fas fa-trash-alt'></i>").click(function(){
+                var p=$(this).parent();
+                p.fadeOut(function(){
+                    p.remove();
+                });
+            });
+
+
+
+
+            var check =$("<i class='fas fa-check'></i>").click(function(){
+                var p=$(this).parent();
+                p.fadeOut(function(){
+                    $(".comp").append(p);
+                    p.fadeIn();
+                });
+                $(this).remove();
+            });
+
+
+
+
+            task.append(del,check);
+           $(".notcopleated").append(task);
+           $(".tatb").val("");
+
+          }
+        });
+      </script>
+</body>
+</html>
